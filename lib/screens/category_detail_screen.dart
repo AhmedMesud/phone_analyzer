@@ -92,13 +92,18 @@ class CategoryDetailScreen extends StatelessWidget {
                   ],
                 ),
               ),
-              title: Text(
-                title,
-                style: const TextStyle(
-                  fontWeight: FontWeight.bold,
-                  color: Colors.white,
+              title: Padding(
+                padding: const EdgeInsets.only(left: 24, bottom: 16),
+                child: Text(
+                  title,
+                  style: const TextStyle(
+                    fontWeight: FontWeight.bold,
+                    color: Colors.white,
+                    fontSize: 20,
+                  ),
                 ),
               ),
+              titlePadding: EdgeInsets.zero,
             ),
             leading: IconButton(
               icon: const Icon(Icons.arrow_back_ios, color: Colors.white),

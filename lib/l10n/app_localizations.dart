@@ -143,6 +143,7 @@ class AppLocalizations {
   String get ipAddress => translate('ipAddress');
   String get wifiMac => translate('wifiMac');
   String get bluetoothMac => translate('bluetoothMac');
+  String get bluetoothName => translate('bluetoothName');
   String get imei => translate('imei');
   String get softwareSecurity => translate('softwareSecurity');
   String get androidVersion => translate('androidVersion');

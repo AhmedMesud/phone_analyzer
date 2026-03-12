@@ -333,12 +333,14 @@ class CategoryCard extends StatelessWidget {
                     Text(
                       title,
                       style: TextStyle(
-                        fontSize: 15,
+                        fontSize: 14,
                         fontWeight: FontWeight.bold,
                         color: isDark ? AppColors.textPrimary : Colors.black87,
+                        height: 1.2,
                       ),
-                      maxLines: 1,
+                      maxLines: 2,
                       overflow: TextOverflow.ellipsis,
+                      softWrap: true,
                     ),
                     const SizedBox(height: 4),
                     // Alt başlık
@@ -498,6 +500,9 @@ class ModernListTile extends StatelessWidget {
                     fontSize: 14,
                     color: isDark ? AppColors.textSecondary : Colors.grey.shade700,
                   ),
+                  maxLines: 2,
+                  softWrap: true,
+                  overflow: TextOverflow.visible,
                 ),
                 if (subtitle != null)
                   Text(
@@ -506,11 +511,16 @@ class ModernListTile extends StatelessWidget {
                       fontSize: 11,
                       color: isDark ? AppColors.textMuted : Colors.grey.shade500,
                     ),
+                    maxLines: 2,
+                    softWrap: true,
+                    overflow: TextOverflow.visible,
                   ),
               ],
             ),
           ),
+          const SizedBox(width: 12),
           Flexible(
+            flex: 2,
             child: Text(
               value,
               style: TextStyle(
@@ -519,7 +529,9 @@ class ModernListTile extends StatelessWidget {
                 color: isDark ? AppColors.textPrimary : Colors.black87,
               ),
               textAlign: TextAlign.right,
-              overflow: TextOverflow.ellipsis,
+              maxLines: 3,
+              softWrap: true,
+              overflow: TextOverflow.visible,
             ),
           ),
         ],

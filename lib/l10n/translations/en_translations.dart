@@ -75,6 +75,7 @@ class EnTranslations {
     'ipAddress': 'IP Address',
     'wifiMac': 'Wi-Fi MAC',
     'bluetoothMac': 'Bluetooth MAC',
+    'bluetoothName': 'Bluetooth Name',
     'imei': 'IMEI',
     'softwareSecurity': 'Software & Security',
     'androidVersion': 'Android Version',

@@ -1,4 +1,40 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android">
+    
+    <!-- Cihaz Bilgileri İçin İzinler -->
+    <!-- Kamera -->
+    <uses-permission android:name="android.permission.CAMERA" />
+    
+    <!-- Ağ ve Bağlantı -->
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <uses-permission android:name="android.permission.BLUETOOTH" />
+    <uses-permission android:name="android.permission.BLUETOOTH_CONNECT" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    
+    <!-- Telephony (IMEI, ağ tipi için) -->
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    
+    <!-- NFC -->
+    <uses-permission android:name="android.permission.NFC" />
+    
+    <!-- Sensörler (Parmak izi, vb.) -->
+    <uses-permission android:name="android.permission.USE_BIOMETRIC" />
+    <uses-permission android:name="android.permission.USE_FINGERPRINT" />
+    
+    <!-- Donanım Özellikleri (Gerekli değilse kullanılabilir) -->
+    <uses-feature android:name="android.hardware.camera" android:required="false" />
+    <uses-feature android:name="android.hardware.camera.autofocus" android:required="false" />
+    <uses-feature android:name="android.hardware.fingerprint" android:required="false" />
+    <uses-feature android:name="android.hardware.nfc" android:required="false" />
+    <uses-feature android:name="android.hardware.bluetooth" android:required="false" />
+    <uses-feature android:name="android.hardware.sensor.accelerometer" android:required="false" />
+    <uses-feature android:name="android.hardware.sensor.gyroscope" android:required="false" />
+    <uses-feature android:name="android.hardware.sensor.proximity" android:required="false" />
+    <uses-feature android:name="android.hardware.sensor.light" android:required="false" />
+    <uses-feature android:name="android.hardware.sensor.barometer" android:required="false" />
+    <uses-feature android:name="android.hardware.sensor.compass" android:required="false" />
+    
     <application
         android:label="phone_analyzer"
         android:name="${applicationName}"

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
+import 'package:permission_handler/permission_handler.dart';
 import 'l10n/app_localizations.dart';
 import 'screens/language_selection_screen.dart';
 import 'screens/home_screen.dart';
@@ -46,7 +47,25 @@ class _MyAppState extends State<MyApp> {
     super.initState();
     WidgetsBinding.instance.addPostFrameCallback((_) {
       _loadSettings();
+      _requestPermissions();
     });
+  }
+
+  Future<void> _requestPermissions() async {
+    // Gerekli izinleri iste
+    final permissions = [
+      Permission.camera,
+      Permission.phone,
+      Permission.location,
+      Permission.bluetooth,
+    ];
+
+    for (final permission in permissions) {
+      final status = await permission.status;
+      if (status.isDenied || status.isRestricted) {
+        await permission.request();
+      }
+    }
   }
 
   Future<void> _loadSettings() async {

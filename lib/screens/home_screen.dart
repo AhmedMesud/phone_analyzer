@@ -82,6 +82,7 @@ class _HomeScreenState extends State<HomeScreen> with SingleTickerProviderStateM
   bool _hasCompass = false;
   String _wifiMac = '';
   String _bluetoothMac = '';
+  String _bluetoothName = '';
   String _imei = '';
   String _ipAddress = '';
   String _networkType = '';
@@ -103,6 +104,7 @@ class _HomeScreenState extends State<HomeScreen> with SingleTickerProviderStateM
   bool _hasIRBlaster = false;
   String _ipRating = '';
   String _fastCharging = '';
+  bool _hasWirelessCharging = false;
 
   bool _isLoading = true;
   late AnimationController _animationController;
@@ -234,6 +236,7 @@ class _HomeScreenState extends State<HomeScreen> with SingleTickerProviderStateM
       final network = results['network'] as Map<dynamic, dynamic>?;
       _wifiMac = network?['wifiMac'] ?? 'Unknown';
       _bluetoothMac = network?['bluetoothMac'] ?? 'Unknown';
+      _bluetoothName = network?['bluetoothName'] ?? 'Unknown';
       _imei = network?['imei'] ?? 'Unknown';
       _ipAddress = network?['ipAddress'] ?? 'Unknown';
       _networkType = network?['networkType'] ?? 'Unknown';
@@ -735,6 +738,11 @@ class _HomeScreenState extends State<HomeScreen> with SingleTickerProviderStateM
                                 label: 'NFC ${_nfcEnabled ? "(On)" : "(Off)"}',
                                 icon: Icons.nfc,
                               ),
+                            if (_hasWirelessCharging)
+                              FeatureChip(
+                                label: 'Wireless Charging',
+                                icon: Icons.battery_charging_full,
+                              ),
                             if (_hasIRBlaster)
                               FeatureChip(
                                 label: 'IR Blaster',
@@ -794,8 +802,8 @@ class _HomeScreenState extends State<HomeScreen> with SingleTickerProviderStateM
       {
         'id': 'performance',
         'icon': Icons.speed,
-        'title': l10n?.performance ?? 'Performans',
-        'subtitle': '${_cpuCoreCount != 'Unknown' ? '$_cpuCoreCount Çekirdek' : 'CPU & GPU'}',
+        'title': '${l10n?.performance ?? 'Performans'} (CPU/GPU)',
+        'subtitle': '${_cpuCoreCount != 'Unknown' ? '$_cpuCoreCount Çekirdek' : 'CPU ve GPU Bilgileri'}',
         'color': AppColors.accentGreen,
         'badge': null,
       },
@@ -1059,7 +1067,7 @@ class _HomeScreenState extends State<HomeScreen> with SingleTickerProviderStateM
       context,
       MaterialPageRoute(
         builder: (context) => CategoryDetailScreen(
-          title: l10n?.performance ?? 'Performance',
+          title: '${l10n?.performance ?? 'Performance'} (CPU/GPU)',
           icon: Icons.speed,
           accentColor: AppColors.accentGreen,
           l10n: l10n,
@@ -1229,6 +1237,12 @@ class _HomeScreenState extends State<HomeScreen> with SingleTickerProviderStateM
               iconColor: const Color(0xFF4dabf7),
               title: l10n?.bluetoothMac ?? 'Bluetooth MAC',
               value: _bluetoothMac,
+            ),
+            ModernListTile(
+              leadingIcon: Icons.bluetooth_audio,
+              iconColor: const Color(0xFF4dabf7),
+              title: l10n?.bluetoothName ?? 'Bluetooth Name',
+              value: _bluetoothName,
             ),
             ModernListTile(
               leadingIcon: Icons.sim_card,
